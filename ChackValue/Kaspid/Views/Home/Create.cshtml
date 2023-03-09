@@ -1,0 +1,64 @@
+﻿@model Kaspid.Models.RangeValue
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Create</title>
+    <link href="~/Content/css/Style.css" rel="stylesheet" />
+</head>
+<body>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <div class="wBox">
+            <div class="wContent">
+                <div class="form">
+                    <div class="clear"></div>
+                    <div class="halfInput">
+                        <label>Min</label>
+                        @Html.EditorFor(model => model.Min, new { htmlAttributes = new { @class = "txt" } })
+                        <span class="alertError">@Html.ValidationMessageFor(model => model.Min, "")</span>
+                    </div>
+                    <div class="halfInput">
+                        <label>if oprater is  <= please checked</label>
+                        <div class="checkbox">
+                            @Html.CheckBoxFor(model => model.Oprate1, new { id = "cheakbx1" })
+                            <label for='cheakbx1'> Yes</label>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                    <div class="halfInput">
+                        <label>Max</label>
+                        @Html.EditorFor(model => model.Max, new { htmlAttributes = new { @class = "txt" } })
+                        <span class="alertError">@Html.ValidationMessageFor(model => model.Max, "")</span>
+                    </div>
+                    <div class="halfInput">
+                        <label>if oprater is  <= please checked</label>
+                        <div class="checkbox">
+                            @Html.CheckBoxFor(model => model.Oprate1, new { id = "cheakbx2" })
+                            <label for='cheakbx2'>Yes </label>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                    <div class="halfInput">
+                        <label>Result</label>
+                        @Html.EditorFor(model => model.Result, new { htmlAttributes = new { @class = "txt" } })
+                        <span class="alertError">@Html.ValidationMessageFor(model => model.Result, "")</span>
+                    </div>
+                    <div class="clear"></div>
+                    <div class="btnHolder"><span style="color:red">@ViewBag.Messge</span></div>
+                        <div class="btnHolder">
+                            <input type="submit" value="Insert" class="btn1" />
+                            <a href="/" class="btn3">Cancel</a>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    }
+</body>
+</html>

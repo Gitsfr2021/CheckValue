@@ -1,0 +1,60 @@
+﻿@using Kaspid.Models
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Check Value</title>
+    <link href="~/Content/css/Style.css" rel="stylesheet" />
+</head>
+<body>
+    @using (Html.BeginForm("Index", "Home", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+        <div class="wBox searchBox">
+            <div class="wContent">
+                <div class="aSearch">
+                    <div class="searchCol">
+                        @Html.TextBox("S_Num", ViewBag.S_Num as string, new { @class = "stxt", @placeholder = "Enter Number" })
+                    </div>
+                    <div class="clear"></div>
+                    <div class="searchBtns">
+                        <input type="submit" class="btn1" value="Search" />
+                        <a href="/" class="btn2"> Reset</a>
+                    </div>
+                    @ViewBag.Messge
+                </div>
+            </div>
+        </div>
+    }
+    <div class="wBox">
+        <ul class="controlslinks">
+            <li><a href="@Url.Action("Create")" class="lColor2"><i class="mdi mdi-plus"></i> Add</a></li>
+        </ul>
+        <table class="tbl">
+            <tr>
+                <th>Conditions</th>
+                <th>Result</th>
+                <th>Operations</th>
+            </tr>
+            @foreach (object item in ViewBag.Range)
+            {
+                <tr>
+                    <td>@item.Prop("Conditions")</td>
+                    <td>@item.Prop("Result")</td>
+                    <td>
+                        <a href="@Url.Action("Delete","Home",new { id = @item.Prop("Id") })" class="opr" onclick="return confirm('Are you sure?');">
+                            <img src="~/Content/images/index.png" width="20" height="20" />
+                        </a>
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+</body>
+</html>

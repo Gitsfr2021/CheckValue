@@ -1,0 +1,193 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<doc>
+  <assembly>
+    <name>Jdenticon.AspNet.Mvc</name>
+  </assembly>
+  <members>
+    <member name="T:Jdenticon.AspNet.Mvc.HtmlHelperExtensions">
+      <summary>
+        <see cref="T:System.Web.Mvc.HtmlHelper" /> extension methods for Jdenticon.
+            </summary>
+    </member>
+    <member name="M:Jdenticon.AspNet.Mvc.HtmlHelperExtensions.Identicon(System.Web.Mvc.HtmlHelper,Jdenticon.Identicon,System.Int32,System.String,Jdenticon.ExportImageFormat)">
+      <summary>
+            Renders an identicon as an IMG tag.
+            </summary>
+      <param name="helper">The <see cref="T:System.Web.Mvc.HtmlHelper" />.</param>
+      <param name="icon">The icon that will be rendered.</param>
+      <param name="size">The size of the generated icon in pixels. If no size is specified the size of <paramref name="icon" /> will be used.</param>
+      <param name="alt">The alt attribute of the rendered image.</param>
+      <param name="format">The file format of the generated icon.</param>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+        <paramref name="size" /> was less than 1.</exception>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="helper" /> or <paramref name="icon" /> was <c>null</c>.</exception>
+    </member>
+    <member name="M:Jdenticon.AspNet.Mvc.HtmlHelperExtensions.Identicon(System.Web.Mvc.HtmlHelper,System.Byte[],System.Int32,System.String,Jdenticon.ExportImageFormat,Jdenticon.IdenticonStyle)">
+      <summary>
+            Renders an identicon as an IMG tag.
+            </summary>
+      <param name="helper">The <see cref="T:System.Web.Mvc.HtmlHelper" />.</param>
+      <param name="hash">The hash that will be used as base for the icon. Must contain at least 6 bytes.</param>
+      <param name="size">The size of the generated icon in pixels.</param>
+      <param name="alt">The alt attribute of the rendered image.</param>
+      <param name="style">The icon style.</param>
+      <param name="format">The file format of the generated icon.</param>
+      <param name="icon">The icon that will be rendered.</param>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+        <paramref name="size" /> was less than 1.</exception>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="hash" /> was too short.</exception>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="helper" /> or <paramref name="hash" /> was <c>null</c>.</exception>
+    </member>
+    <member name="M:Jdenticon.AspNet.Mvc.HtmlHelperExtensions.Identicon(System.Web.Mvc.HtmlHelper,System.Object,System.Int32,System.String,Jdenticon.ExportImageFormat,Jdenticon.IdenticonStyle)">
+      <summary>
+            Renders an identicon as an IMG tag.
+            </summary>
+      <param name="helper">The <see cref="T:System.Web.Mvc.HtmlHelper" />.</param>
+      <param name="value">The value that will be hashed and used as base for the icon.</param>
+      <param name="size">The size of the generated icon in pixels.</param>
+      <param name="alt">The alt attribute of the rendered image.</param>
+      <param name="style">The icon style.</param>
+      <param name="format">The file format of the generated icon.</param>
+      <param name="icon">The icon that will be rendered.</param>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+        <paramref name="size" /> was less than 1.</exception>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="helper" /> was <c>null</c>.</exception>
+    </member>
+    <member name="T:Jdenticon.AspNet.Mvc.IdenticonHttpHandler">
+      <summary>
+        <see cref="T:System.Web.IHttpHandler" /> implementation used to serve icons.
+            </summary>
+    </member>
+    <member name="M:Jdenticon.AspNet.Mvc.IdenticonHttpHandler.#ctor">
+      <summary>
+            Creates a new instance of <see cref="T:Jdenticon.AspNet.Mvc.IdenticonHttpHandler" />.
+            </summary>
+    </member>
+    <member name="P:Jdenticon.AspNet.Mvc.IdenticonHttpHandler.IsReusable">
+      <summary>
+            Gets a value indicating whether another request can use the <see cref="T:Jdenticon.AspNet.Mvc.IdenticonHttpHandler" /> instance.
+            </summary>
+    </member>
+    <member name="M:Jdenticon.AspNet.Mvc.IdenticonHttpHandler.ProcessRequest(System.Web.HttpContext)">
+      <summary>
+            Renders the requested identicon and returns it to the client.
+            </summary>
+      <param name="context">
+        <see cref="T:System.Web.HttpContext" /> with the current request and response.</param>
+    </member>
+    <member name="T:Jdenticon.AspNet.Mvc.IdenticonResult">
+      <summary>
+            Defines a result that will render and return an identicon.
+            </summary>
+    </member>
+    <member name="M:Jdenticon.AspNet.Mvc.IdenticonResult.ExecuteResult(System.Web.Mvc.ControllerContext)">
+      <summary>
+            Renders the requested identicon and returns it to the client.
+            </summary>
+      <param name="context">
+        <see cref="T:System.Web.Mvc.ControllerContext" /> with the current request and response.</param>
+    </member>
+    <member name="M:Jdenticon.AspNet.Mvc.IdenticonResult.FromHash(System.Byte[],System.Int32,Jdenticon.ExportImageFormat)">
+      <summary>
+            Creates an <see cref="T:Jdenticon.Identicon" /> instance with the specified hash.
+            </summary>
+      <param name="hash">The hash that will be used as base for this icon. The hash must contain at least 6 bytes.</param>
+      <param name="size">The size of the icon in pixels.</param>
+      <param name="format">The format of the generated icon.</param>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+        <paramref name="size" /> was less than 1.</exception>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="hash" /> was too short.</exception>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="hash" /> was <c>null</c>.</exception>
+    </member>
+    <member name="M:Jdenticon.AspNet.Mvc.IdenticonResult.FromHash(System.String,System.Int32,Jdenticon.ExportImageFormat)">
+      <summary>
+            Creates an <see cref="T:Jdenticon.Identicon" /> instance with the specified hash.
+            </summary>
+      <param name="hash">The hex encoded hash that will be used as base for the icon. The hash string must contain at least 12 characters.</param>
+      <param name="size">The size of the icon in pixels.</param>
+      <param name="format">The format of the generated icon.</param>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+        <paramref name="size" /> was less than 1.</exception>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="hash" /> was too short.</exception>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="hash" /> was <c>null</c>.</exception>
+    </member>
+    <member name="M:Jdenticon.AspNet.Mvc.IdenticonResult.FromIcon(Jdenticon.Identicon,Jdenticon.ExportImageFormat)">
+      <summary>
+            Creates an <see cref="T:Jdenticon.Identicon" /> instance with a hash of the specified object.
+            </summary>
+      <param name="icon">The <see cref="T:Jdenticon.Identicon" /> to be rendered.</param>
+      <param name="format">The format of the generated icon.</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="icon" /> was <c>null</c>.</exception>
+    </member>
+    <member name="M:Jdenticon.AspNet.Mvc.IdenticonResult.FromValue(System.Object,System.Int32,Jdenticon.ExportImageFormat,System.String)">
+      <summary>
+            Creates an <see cref="T:Jdenticon.Identicon" /> instance with a hash of the specified object.
+            </summary>
+      <param name="value">The string representation of this object will be hashed and used as base for this icon. Null values are supported and handled as empty strings.</param>
+      <param name="size">The size of the icon in pixels.</param>
+      <param name="format">The format of the generated icon.</param>
+      <param name="hashAlgorithmName">The name of the hash algorithm to use for hashing.</param>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+        <paramref name="size" /> was less than 1.</exception>
+    </member>
+    <member name="T:Jdenticon.AspNet.Mvc.UrlHelperExtensions">
+      <summary>
+        <see cref="T:System.Web.Mvc.UrlHelper" /> extension methods for Jdenticon.
+            </summary>
+    </member>
+    <member name="M:Jdenticon.AspNet.Mvc.UrlHelperExtensions.Identicon(System.Web.Mvc.UrlHelper,Jdenticon.Identicon,System.Int32,Jdenticon.ExportImageFormat)">
+      <summary>
+            Generates an URL to an identicon.
+            </summary>
+      <param name="helper">The <see cref="T:System.Web.Mvc.UrlHelper" />.</param>
+      <param name="icon">The icon that will be rendered.</param>
+      <param name="size">The size of the generated icon in pixels. If no size is specified the size of <paramref name="icon" /> will be used.</param>
+      <param name="format">The file format of the generated icon.</param>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+        <paramref name="size" /> was less than 1.</exception>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="helper" /> or <paramref name="icon" /> was <c>null</c>.</exception>
+    </member>
+    <member name="M:Jdenticon.AspNet.Mvc.UrlHelperExtensions.Identicon(System.Web.Mvc.UrlHelper,System.Byte[],System.Int32,Jdenticon.ExportImageFormat,Jdenticon.IdenticonStyle)">
+      <summary>
+            Generates an URL to an identicon.
+            </summary>
+      <param name="helper">The <see cref="T:System.Web.Mvc.UrlHelper" />.</param>
+      <param name="hash">The hash that will be used as base for the icon. Must contain at least 6 bytes.</param>
+      <param name="size">The size of the generated icon in pixels.</param>
+      <param name="style">The icon style.</param>
+      <param name="format">The file format of the generated icon.</param>
+      <param name="icon">The icon that will be rendered.</param>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+        <paramref name="size" /> was less than 1.</exception>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="hash" /> was too short.</exception>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="helper" /> or <paramref name="hash" /> was <c>null</c>.</exception>
+    </member>
+    <member name="M:Jdenticon.AspNet.Mvc.UrlHelperExtensions.Identicon(System.Web.Mvc.UrlHelper,System.Object,System.Int32,Jdenticon.ExportImageFormat,Jdenticon.IdenticonStyle)">
+      <summary>
+            Generates an URL to an identicon.
+            </summary>
+      <param name="helper">The <see cref="T:System.Web.Mvc.UrlHelper" />.</param>
+      <param name="value">The value that will be hashed and used as base for the icon.</param>
+      <param name="size">The size of the generated icon in pixels.</param>
+      <param name="style">The icon style.</param>
+      <param name="format">The file format of the generated icon.</param>
+      <param name="icon">The icon that will be rendered.</param>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+        <paramref name="size" /> was less than 1.</exception>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="helper" /> was <c>null</c>.</exception>
+    </member>
+  </members>
+</doc>
